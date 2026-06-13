@@ -1,7 +1,7 @@
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
-URDF = Path("/home/lctr/miniforge3/envs/icub-pybullet/share/iCub/robots/iCubGazeboV2_5_visuomanip/model.urdf")
+URDF = Path("")
 
 tree = ET.parse(URDF)
 root = tree.getroot()

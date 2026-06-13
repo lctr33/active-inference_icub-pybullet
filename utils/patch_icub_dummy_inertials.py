@@ -2,7 +2,7 @@ import xml.etree.ElementTree as ET
 from pathlib import Path
 import shutil
 
-SRC = Path("/home/lctr/miniforge3/envs/icub-pybullet/share/iCub/robots/iCubGazeboV2_5_visuomanip/model.urdf")
+SRC = Path("")
 DST = SRC.with_name("model_patched.urdf")
 
 DUMMY_MASS = "1e-6"
