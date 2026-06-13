@@ -4,6 +4,10 @@ __pycache__/
 *.pyo
 *.pyd
 
+# Installers
+Miniforge3-*.sh
+Miniforge3-*.exe
+
 # Entornos virtuales
 venv/
 .env/
@@ -38,3 +42,7 @@ videos/
 
 # Configuración local
 .env
+
+# Installers
+Miniforge3-*.sh
+Miniforge3-*.exe
