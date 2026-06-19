@@ -5,15 +5,12 @@ El entorno utiliza el modelo `iCubGazeboV2_5_visuomanip` de `icub-models`, una d
 
 ## Requisitos generales
 
-* Git
 * Miniforge / Conda
 * Python 3.10 o 3.11
 * `icub-models`
 * PyBullet
 * NumPy
 * OpenCV
-
-El proyecto usa la variable de entorno `ICUB_URDF` para localizar el modelo URDF del iCub.
 
 ---
 
@@ -66,14 +63,14 @@ cd active-inference_icub-pybullet
 ## 4. Crear el entorno Conda
 
 ```bash
-mamba create -n icub-pybullet python=3.11 -y
+conda create -n icub-pybullet python=3.11 -y
 conda activate icub-pybullet
 ```
 
 ## 5. Instalar `icub-models`
 
 ```bash
-mamba install -c conda-forge icub-models -y
+conda install -c conda-forge icub-models -y
 ```
 
 ## 6. Instalar dependencias de Python
@@ -101,28 +98,6 @@ Por ejemplo:
 ```bash
 /home/usuario/miniforge3/envs/icub-pybullet/share/iCub/robots/iCubGazeboV2_5_visuomanip/model.urdf
 ```
-
-## 8. Definir la variable `ICUB_URDF`
-
-Usa la ruta real encontrada en el paso anterior:
-
-```bash
-export ICUB_URDF="$CONDA_PREFIX/share/iCub/robots/iCubGazeboV2_5_visuomanip/model.urdf"
-```
-
-Para hacerla permanente:
-
-```bash
-echo 'export ICUB_URDF="$CONDA_PREFIX/share/iCub/robots/iCubGazeboV2_5_visuomanip/model.urdf"' >> ~/.bashrc
-source ~/.bashrc
-```
-
-Verifica:
-
-```bash
-echo "$ICUB_URDF"
-```
-
 ---
 
 # Parcheo de dummy inertials en Ubuntu
@@ -138,17 +113,10 @@ Edita el script de parcheo incluido en el proyecto. Por ejemplo:
 nano scripts/patch_dummy_inertials.py
 ```
 
-Dentro del script, coloca la ruta del modelo:
+Dentro del script, coloca tu ruta del modelo:
 
 ```python
 ICUB_URDF = "/home/usuario/miniforge3/envs/icub-pybullet/share/iCub/robots/iCubGazeboV2_5_visuomanip/model.urdf"
-```
-
-También puede usarse la variable de entorno:
-
-```python
-import os
-ICUB_URDF = os.environ["ICUB_URDF"]
 ```
 
 ## 2. Ejecutar el parcheo
@@ -168,16 +136,8 @@ Mantener el URDF parcheado dentro de la misma carpeta del modelo evita romper ru
 ## 3. Actualizar `ICUB_URDF` para usar el modelo parcheado
 
 ```bash
-export ICUB_URDF="$CONDA_PREFIX/share/iCub/robots/iCubGazeboV2_5_visuomanip/model_patched.urdf"
+ICUB_URDF="$CONDA_PREFIX/share/iCub/robots/iCubGazeboV2_5_visuomanip/model_patched.urdf"
 ```
-
-Para hacerlo permanente:
-
-```bash
-echo 'export ICUB_URDF="$CONDA_PREFIX/share/iCub/robots/iCubGazeboV2_5_visuomanip/model_patched.urdf"' >> ~/.bashrc
-source ~/.bashrc
-```
-
 ---
 
 # Instalación en Windows
@@ -190,14 +150,6 @@ Descarga e instala Git para Windows:
 
 ```text
 https://git-scm.com/download/win
-```
-
-Durante la instalación puedes dejar las opciones por defecto.
-
-Verifica:
-
-```powershell
-git --version
 ```
 
 ## 2. Instalar Miniforge
@@ -266,29 +218,6 @@ La ruta normalmente será similar a:
 ```powershell
 C:\Users\TU_USUARIO\miniforge3\envs\icub-pybullet\Library\share\iCub\robots\iCubGazeboV2_5_visuomanip\model.urdf
 ```
-
-## 8. Definir la variable `ICUB_URDF`
-
-Temporalmente, solo para la terminal actual:
-
-```powershell
-$env:ICUB_URDF="C:\Users\TU_USUARIO\miniforge3\envs\icub-pybullet\Library\share\iCub\robots\iCubGazeboV2_5_visuomanip\model.urdf"
-```
-
-Para guardarla de forma permanente:
-
-```powershell
-setx ICUB_URDF "C:\Users\TU_USUARIO\miniforge3\envs\icub-pybullet\Library\share\iCub\robots\iCubGazeboV2_5_visuomanip\model.urdf"
-```
-
-Después de usar `setx`, cierra y vuelve a abrir Miniforge Prompt.
-
-Verifica:
-
-```powershell
-echo $env:ICUB_URDF
-```
-
 ---
 
 # Parcheo de dummy inertials en Windows
@@ -307,13 +236,6 @@ Coloca la ruta del modelo original:
 ICUB_URDF = r"C:\Users\TU_USUARIO\miniforge3\envs\icub-pybullet\Library\share\iCub\robots\iCubGazeboV2_5_visuomanip\model.urdf"
 ```
 
-También puede usarse la variable de entorno:
-
-```python
-import os
-ICUB_URDF = os.environ["ICUB_URDF"]
-```
-
 ## 2. Ejecutar el parcheo
 
 ```powershell
@@ -327,22 +249,6 @@ C:\Users\TU_USUARIO\miniforge3\envs\icub-pybullet\Library\share\iCub\robots\iCub
 ```
 
 ## 3. Actualizar `ICUB_URDF` para usar el modelo parcheado
-
-Temporalmente:
-
-```powershell
-$env:ICUB_URDF="C:\Users\TU_USUARIO\miniforge3\envs\icub-pybullet\Library\share\iCub\robots\iCubGazeboV2_5_visuomanip\model_patched.urdf"
-```
-
-Permanentemente:
-
-```powershell
-setx ICUB_URDF "C:\Users\TU_USUARIO\miniforge3\envs\icub-pybullet\Library\share\iCub\robots\iCubGazeboV2_5_visuomanip\model_patched.urdf"
-```
-
-Reabre Miniforge Prompt después de usar `setx`.
-
----
 
 # Ejecución del proyecto
 
@@ -360,74 +266,17 @@ conda activate icub-pybullet
 conda activate icub-pybullet
 ```
 
-Verifica que `ICUB_URDF` apunta al modelo parcheado:
-
-## Ubuntu
-
-```bash
-echo "$ICUB_URDF"
-```
-
-## Windows
-
-```powershell
-echo $env:ICUB_URDF
-```
+Verifica que `ICUB_URDF` apunta al modelo parcheado
 
 Ejecuta el script principal:
 
 ```bash
-python main.py
+python icub_simulator.py
 ```
-
-Si el archivo principal del proyecto se llama `load_icub.py`, ejecuta:
-
-```bash
-python load_icub.py
-```
-
----
-
-# Notas importantes para PyBullet
-
-El cargador del robot debe usar el URDF indicado por `ICUB_URDF`.
-
-Ejemplo mínimo:
-
-```python
-import os
-import pybullet as p
-
-ICUB_URDF = os.environ["ICUB_URDF"]
-
-robot_id = p.loadURDF(
-    ICUB_URDF,
-    useFixedBase=True,
-    flags=p.URDF_USE_INERTIA_FROM_FILE
-)
-```
-
-El uso de `p.URDF_USE_INERTIA_FROM_FILE` permite respetar las inercias definidas o parcheadas en el URDF.
 
 ---
 
 # Problemas comunes
-
-## `KeyError: 'ICUB_URDF'`
-
-La variable de entorno no está definida.
-
-Ubuntu:
-
-```bash
-export ICUB_URDF="/ruta/al/model_patched.urdf"
-```
-
-Windows:
-
-```powershell
-$env:ICUB_URDF="C:\ruta\al\model_patched.urdf"
-```
 
 ## PyBullet no encuentra meshes
 
@@ -438,34 +287,12 @@ Mantén `model_patched.urdf` dentro de:
 iCubGazeboV2_5_visuomanip/
 ```
 
-## El robot carga con advertencias de inercia
-
-Ejecuta de nuevo el script de parcheo y asegúrate de que `ICUB_URDF` apunta a:
-
-```text
-model_patched.urdf
-```
-
-no a:
-
-```text
-model.urdf
-```
-
-## En Windows no cambia `ICUB_URDF` después de usar `setx`
-
-`setx` solo afecta nuevas terminales.
-Cierra y vuelve a abrir Miniforge Prompt.
-
----
-
 # Flujo rápido
 
 ## Ubuntu
 
 ```bash
 conda activate icub-pybullet
-export ICUB_URDF="$CONDA_PREFIX/share/iCub/robots/iCubGazeboV2_5_visuomanip/model_patched.urdf"
 python icub_simulator.py
 ```
 
@@ -473,6 +300,5 @@ python icub_simulator.py
 
 ```powershell
 conda activate icub-pybullet
-$env:ICUB_URDF="C:\Users\TU_USUARIO\miniforge3\envs\icub-pybullet\Library\share\iCub\robots\iCubGazeboV2_5_visuomanip\model_patched.urdf"
 python icub_simulator.py
 ```
