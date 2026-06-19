@@ -25,11 +25,11 @@ def generar_malla_3x3x3(spacing):
 
     head_pos = [-0.00327, 0.00055, 0.35546]
 
-    distance_in_front = 0.15
+    distance_in_front = 0.20
 
     center = [
         head_pos[0] - distance_in_front,
-        head_pos[1] - 0.06,
+        head_pos[1] - 0.04,
         head_pos[2]
     ]
 

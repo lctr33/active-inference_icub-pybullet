@@ -18,6 +18,7 @@ def initialize_pybullet_gui():
     height = SIMULATION_PARAMS["gui_height"]
     
     physics_client = p.connect(p.GUI, options=f"--opengl2 --width={width} --height={height}")
+    #physics_client = p.connect(p.DIRECT)
 
     # Asegurar que la GUI/rendering están activos
     p.configureDebugVisualizer(p.COV_ENABLE_GUI, 1)
