@@ -133,7 +133,7 @@ $CONDA_PREFIX/share/iCub/robots/iCubGazeboV2_5_visuomanip/model_patched.urdf
 
 Mantener el URDF parcheado dentro de la misma carpeta del modelo evita romper rutas relativas hacia meshes y materiales.
 
-## 3. Actualizar `ICUB_URDF` para usar el modelo parcheado
+## 3. Actualizar `ICUB_URDF` en icub_simulator.py para usar el modelo parcheado, ejemplo:
 
 ```bash
 ICUB_URDF="$CONDA_PREFIX/share/iCub/robots/iCubGazeboV2_5_visuomanip/model_patched.urdf"
@@ -248,7 +248,7 @@ El script debe generar un archivo como:
 C:\Users\TU_USUARIO\miniforge3\envs\icub-pybullet\Library\share\iCub\robots\iCubGazeboV2_5_visuomanip\model_patched.urdf
 ```
 
-## 3. Actualizar `ICUB_URDF` para usar el modelo parcheado
+## 3. Actualizar `ICUB_URDF` en icub_simulator.py para usar el modelo parcheado
 
 # Ejecución del proyecto
 
